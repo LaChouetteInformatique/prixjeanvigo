@@ -1,0 +1,32 @@
+.table-800 {
+    width: 800px !important;
+    margin: auto;
+    max-width: 100%;
+}
+
+.tableau-transparent-2col {
+
+  td {
+    padding: 20px 10px !important;
+  }
+  img {
+    margin: 10px 0;
+  }
+}
+
+.tableau-transparent-2col.content-center td {
+  text-align: center;
+}
+
+@media (width < 768px) {
+  .table-800 {
+    tr {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+    td {
+      width: 100%;
+    }
+  }
+}

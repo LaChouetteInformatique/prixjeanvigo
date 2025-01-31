@@ -1,0 +1,49 @@
+#faq {
+  .elementor-toggle-item {
+    border-radius: 18px;
+    overflow: hidden;
+  }
+
+  .elementor-toggle-title {
+    font-size: 20px !important;
+  }
+
+  .elementor-toggle-icon {
+    font-size: 16px;
+  }
+
+  .elementor-tab-title {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: none !important;
+
+    a {
+      font-weight: 400;
+    }
+  }
+
+  .elementor-tab-content {
+    padding: 0 24px !important;
+    border-bottom: none !important;
+  }
+}
+
+@media (width < 768px){
+
+  #faq {
+    .elementor-tab-title {
+    padding: 24px 18px !important;
+    }
+    
+    .elementor-tab-content {
+        padding: 0 20px !important;
+    }
+    
+    .elementor-tab-content ol,
+    .elementor-tab-content ul{
+        padding-left: 25px ;
+    }
+  }
+}

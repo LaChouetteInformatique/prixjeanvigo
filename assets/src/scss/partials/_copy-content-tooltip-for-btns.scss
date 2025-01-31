@@ -1,0 +1,37 @@
+.copy-tooltip-btn {
+  position: relative;
+  display: inline-block;
+}
+
+.copy-tooltip-btn .tooltiptext {
+  visibility: hidden;
+  width: 140px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  top: 120%;
+  left: 50%;
+  transform: translatex(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.copy-tooltip-btn .tooltiptext::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent #555 transparent;
+}
+
+.copy-tooltip-btn:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}

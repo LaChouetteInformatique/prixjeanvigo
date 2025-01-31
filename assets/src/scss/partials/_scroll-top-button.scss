@@ -1,0 +1,107 @@
+/**
+ * @package    Templates.ceaec
+ * @subpackage ScrollTopButton
+ * @version    1.2
+ *
+ * @files      scrolltopbutton.php, scrollTopButton.js, _scroll-top-button.scss
+ *
+ * @copyright   Copyright (C) 2019 - 2020 La Chouette Informatique All rights reserved.
+ * @license     CC0 1.0 Universal - Public Domain Dedication; see https://creativecommons.org/publicdomain/zero/1.0/deed.en
+ *
+ */
+
+//  $accent-color-1 : var( --e-global-color-b7a7288, #E5A494 );
+$accent-color-1: var(--wp--preset--color--primary-2, #e79696);
+$scroll-top-button-z-index: 99;
+//  $bg-color-1 : var( --e-global-color-b7a7288, #E5A494 );
+$bg-color-1: var(--wp--preset--color--primary-2, #e79696);
+$color: rgb(255, 244, 244);
+
+#scroll-top-button {
+  & > a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    font-size: 2rem;
+    font-size: calc(1.1 * var(--content-font-size, 1em));
+
+    width: 2em;
+    height: 2em;
+    min-width: 1em;
+    min-height: 1em;
+    max-width: 10vw;
+    max-height: 10vw;
+
+    border-radius: 50%;
+
+    // Position
+    position: fixed;
+    right: 1em;
+    right: calc(min(1em, 5vw));
+    bottom: 1em;
+    z-index: $scroll-top-button-z-index;
+
+    border: 0.06em solid var(--bg-color-1, #{$bg-color-1});
+    color: #ffffff;
+    background-color: $accent-color-1;
+
+    opacity: 0;
+    visibility: hidden;
+    // transition: opacity 0.3s, visibility 0s linear 0.5s, transform 0.5s;
+    transition: opacity var(--prefers-reduced-motion, 0.3s),
+      visibility 0s linear var(--prefers-reduced-motion, 0.5s),
+      transform var(--prefers-reduced-motion, 0.5s);
+    transform: scale(0.3, 0.3) translateX(80px);
+
+    &.js-visible {
+      visibility: visible;
+      opacity: 0.5;
+      transition: opacity 0.2s linear 0.1s, visibility 0s linear 0s,
+        transform 0.3s;
+      transition: opacity var(--prefers-reduced-motion, 0.2s) linear
+          var(--prefers-reduced-motion, 0.1s),
+        visibility 0s linear 0s, transform var(--prefers-reduced-motion, 0.3s);
+      transform: scale(1, 1) translateX(0);
+
+      &:hover,
+      &:focus {
+        outline-color: $accent-color-1;
+        opacity: 1;
+      }
+
+      &:hover {
+        transform: scale(1.2, 1.2);
+      }
+    }
+
+    svg {
+      width: 60%;
+    }
+  }
+
+  div[class^="trigger"] {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    // z-index: 100000;
+    pointer-events: none;
+  }
+
+  .trigger-top {
+    height: 1px;
+    // background-color: rgba($color: green, $alpha: 0.8);
+  }
+
+  .trigger-bottom {
+    height: 50%;
+    // background-color: rgba($color: red, $alpha: 0.2);
+  }
+}
+
+@media (max-width: 767px) {
+  #scroll-top-button {
+    display: none;
+  }
+}

@@ -1,0 +1,51 @@
+
+.btn-hover-icon-effect,
+.btn-hover-icon-effect-2 {
+  .elementor-button-content-wrapper,
+  .elementor-button-text,
+  .elementor-button-icon {
+    transition: all .3s;
+  }
+}
+
+$btn-effect-margin: 7px;
+
+.btn-hover-icon-effect {
+  .elementor-button:hover {
+    .elementor-button-icon {
+      margin-right: -$btn-effect-margin;
+      margin-left: $btn-effect-margin;
+      // display: flex;
+    }
+
+    .elementor-button-text {
+      margin-right: $btn-effect-margin;
+      margin-left: -$btn-effect-margin;
+    }
+  }
+}
+
+.btn-hover-icon-effect-2 {
+  .elementor-button:hover {
+    .elementor-button-icon {
+      margin-right: $btn-effect-margin;
+      margin-left: -$btn-effect-margin;
+      display: flex;
+    }
+
+    .elementor-button-text {
+      margin-right: -$btn-effect-margin;
+      margin-left: $btn-effect-margin;
+    }
+  }
+}
+
+
+
+.btn-shadow-dark-1 a {
+  box-shadow: 2px 2px 8px rgba(0,0,0, 0.5) !important;
+}
+
+.btn-shadow-light-1 a {
+  box-shadow: 0 0 8px 2px rgba(255,255,255, 0.2) !important;
+}

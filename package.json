@@ -1,0 +1,65 @@
+{
+  "name": "db-plugin",
+  "version": "1.0.0",
+  "description": "monbalconparisien.fr website",
+  "main": "index.js",
+  "author": "Damien BECHERINI",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@babel/core": "^7.17.5",
+    "@babel/preset-env": "^7.16.11",
+    "@lodder/grunt-postcss": "^3.1.1",
+    "@wordpress/stylelint-config": "^23.1.0",
+    "autoprefixer": "^10.4.0",
+    "babelify": "^10.0.0",
+    "browser-sync": "^2.11.2",
+    "concurrently": "^6.3.0",
+    "core-js": "^3.19.1",
+    "cssnano": "^5.0.9",
+    "dir-archiver": "^1.1.1",
+    "eslint": "^8.2.0",
+    "grunt": "^1.4.1",
+    "grunt-babel": "^8.0.0",
+    "grunt-browser-sync": "^2.2.0",
+    "grunt-browserify": "^6.0.0",
+    "grunt-contrib-clean": "^2.0.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-uglify": "^5.2.2",
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-dart-sass": "^2.0.1",
+    "grunt-sass": "^3.1.0",
+    "load-grunt-tasks": "^5.1.0",
+    "postcss": "^8.4.5",
+    "postcss-browser-reporter": "^0.7.0",
+    "postcss-reporter": "^7.0.4",
+    "rtlcss": "^3.5.0",
+    "sass": "^1.43.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile:rtl": "rtlcss style.css style-rtl.css",
+    "lint:scss": "wp-scripts lint-style 'sass/**/*.scss'",
+    "lint:js": "wp-scripts lint-js 'js/*.js'",
+    "dev": "grunt --mode=dev",
+    "start": "grunt --mode=dev",
+    "build": "grunt",
+    "bundle": "dir-archiver --src . --dest ../_s.zip --exclude .DS_Store .editorconfig .eslintignore .eslintrc .git .gitattributes .github .gitignore .stylelintrc.json .travis.yml composer.json composer.lock Gruntfile.js node_modules  package-lock.json package.json phpcs.xml.dist README.md sass style.css.map vendor"
+  },
+  "browserslist": [
+    ">0.1%",
+    "not dead"
+  ],
+  "rtlcssConfig": {
+    "options": {
+      "autoRename": false,
+      "autoRenameStrict": false,
+      "blacklist": {},
+      "clean": true,
+      "greedy": false,
+      "processUrls": false,
+      "stringMap": []
+    },
+    "plugins": [],
+    "map": false
+  }
+}

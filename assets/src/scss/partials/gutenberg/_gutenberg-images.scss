@@ -1,0 +1,26 @@
+body {
+  .wp-block-image {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  p+ .wp-block-image {
+    margin-top: 40px;
+  }
+
+
+
+  .wp-block-image img {
+    border-radius: 4px;
+  }
+}
+
+.is-content-justification-center .wp-block-image {
+  display: table;
+
+  figcaption {
+    caption-side: bottom;
+    display: table-caption;
+  }
+}
+

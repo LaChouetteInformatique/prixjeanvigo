@@ -1,0 +1,7 @@
+	#header-wrapper {
+		transition: top 0.4s ease-in-out;
+	}
+	
+	#header-wrapper.js-slide-up {
+		top: -120px !important;
+	}
