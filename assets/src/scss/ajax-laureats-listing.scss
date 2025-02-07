@@ -134,7 +134,7 @@
     // height: 37px;
     margin-bottom: 1px;
     color: #ffffff;
-    background-color: var( --e-global-color-secondary );
+    background-color: var( --e-global-color-primary );
     border: none;
     font-weight: 600;
 
@@ -148,7 +148,7 @@
     }
 
     &:hover {
-      background-color: var( --e-global-color-primary );
+      background-color: var( --e-global-color-secondary );
     }
   }
 }

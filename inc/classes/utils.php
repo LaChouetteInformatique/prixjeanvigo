@@ -64,6 +64,7 @@ class Utils {
 				'proper_filename' => $data['proper_filename']
 		];
 	}
+	
 	function cc_mime_types( $mimes ){
 		$mimes['svg'] = 'image/svg+xml';
 		return $mimes;

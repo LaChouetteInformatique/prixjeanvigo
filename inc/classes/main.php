@@ -13,6 +13,10 @@ class Main {
 
 	protected function __construct() {
 
+		// load others classes.
+		Rest_API::getInstance();
+		// Utils::getInstance();
+
 		// Register main scripts and styles
 		add_action('wp_enqueue_scripts', [$this, 'enqueue_scripts']);
 
@@ -164,27 +168,35 @@ class Main {
 		END;
 	}
 
-	// On récupère le dernier palmares-media en DB avec utilisation d'un transient
-	function get_last_palmares_media() {
-		$nomtransient = 'dernier_palmares-media'; // custom name
+	// On récupère la derniere actualité en DB avec utilisation d'un transient
+	function get_last_palmares() {
+		$nomtransient = 'derniere_actualite'; // custom name
 		// delete_transient($nomtransient);
 		// Le transient est-il inexistant ou expiré ?
 		if ( false === ( $transient = get_transient( $nomtransient ) ) ) {
 
 			// Helpers\pre_print_r("inside");
 
-			// On récupère le dernier palmares-media en DB
+			// On récupère la derniere actualite en DB
 			$args = array(
-				'post_type' => 'palmares-media',
+				'post_type' => 'actualite',
 				'post_status' => 'publish',
 				'posts_per_page'=>1,
 				'order'=>'DESC',
 				'orderby'=>'date',
-				'tax_query' => array(
+				// 'tax_query' => array(
+				// 	array(
+				// 		'taxonomy' => 'categories-mediatheque',
+				// 		'field' => 'slug',
+				// 		'terms' => 'palmares',
+				// 	),
+				// ),
+				'meta_query'    => array(
+					// 'relation'      => 'AND',
 					array(
-						'taxonomy' => 'categories-mediatheque',
-						'field' => 'slug',
-						'terms' => 'palmares',
+						'key'       => 'is_palmares',
+						'value'     => '1',
+						'compare'   => '=',
 					),
 				),
 			);
@@ -209,7 +221,7 @@ class Main {
 		// start buffer
 		ob_start();
 
-			$post = $this->get_last_palmares_media();
+			$post = $this->get_last_palmares();
 		
 			if (has_post_thumbnail( $post->ID ) ):
 				$image_id = get_post_thumbnail_id($post->ID);
@@ -229,14 +241,14 @@ class Main {
 
 	function last_palmares_details_shortcode() {
 		ob_start();
-			$post = $this->get_last_palmares_media();
+			$post = $this->get_last_palmares();
 			the_field("detail_palmares", $post->ID);
 		return ob_get_clean();
 	}
 
 	function last_palmares_link_shortcode() {
 		ob_start();
-			$post = $this->get_last_palmares_media();
+			$post = $this->get_last_palmares();
 			echo get_permalink( $post );
 		return ob_get_clean();
 	}
