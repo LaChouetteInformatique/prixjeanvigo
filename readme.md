@@ -1,10 +1,33 @@
 # Functionnalities :
 
+Use of npm + Grunt to compile SCSS and JS
+
+## JS components
+
+- toggleHeaderOnScroll.js : toggle show / hide website header depending of scroll direction
+- scrollTopButton.js : toggle show scroll top button if the page is scrolled enough
+- ajax-laureats-listing.js : Call WordPress admin-ajax.php to dynamically request custom posts depending of custom filters. This file use variables passed from PHP by `laureats_listing_shortcode_resource` function in `Main` class. Those variables are the request url and the nonce (security).
+
 ## Autoloader
 
 Custom autoloader and classes using singleton pattern
 
 ## class Main
+
+### Custom post grid with filters and Ajax loading
+
+``` php
+// Ajax request Handler for "laureats_listing" action
+add_action('wp_ajax_nopriv_laureats_listing', [ $this, 'laureats_listing_filter_ajax' ]);
+add_action('wp_ajax_laureats_listing', [ $this, 'laureats_listing_filter_ajax' ]);
+```
+
+#### Linked JS file :
+`ajax-laureats-listing.js`
+
+#### Linked Template parts :
+`/inc/template_parts/ajax-laureats-listing-content.php`
+`/inc/template_parts/ajax-laureats-listing-filters.php`
 
 ### Transient
 
@@ -33,19 +56,6 @@ add_shortcode( 'lci-year', function() { $year = date('Y'); return $year; });
 add_action('init', [ $this, 'laureats_listing_shortcode_resource' ]);
 add_shortcode( 'laureats-listing', [$this, 'laureats_listing_shortcode']);
 ```
-
-
-### Custom post grid with filters and Ajax loading
-
-``` php
-// Ajax request Handler for "laureats_listing" action
-add_action('wp_ajax_nopriv_laureats_listing', [ $this, 'laureats_listing_filter_ajax' ]);
-add_action('wp_ajax_laureats_listing', [ $this, 'laureats_listing_filter_ajax' ]);
-```
-
-#### Linked Template parts :
-`/inc/template_parts/ajax-laureats-listing-content.php`
-`/inc/template_parts/ajax-laureats-listing-filters.php`
 
 ### Admin pannel add custom columns
 
